@@ -1062,12 +1062,14 @@ public class Mission {
 
 
     private func createMissionProgressObservable() -> Observable<MissionProgress> {
+        var call: ServerStreamingCall<AnyObject, AnyObject>!
+        
         return Observable.create { observer in
             let request = Mavsdk_Rpc_Mission_SubscribeMissionProgressRequest()
 
             
 
-            _ = self.service.subscribeMissionProgress(request, handler: { (response) in
+            call = self.service.subscribeMissionProgress(request, handler: { (response) in
 
                 
                      
@@ -1087,6 +1089,9 @@ public class Mission {
             }
         }
         .share(replay: 1)
+        .do(onDispose: {
+            call.cancel(promise: nil)
+        })
     }
 
     /**
