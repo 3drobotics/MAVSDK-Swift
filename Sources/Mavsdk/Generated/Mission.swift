@@ -1062,14 +1062,12 @@ public class Mission {
 
 
     private func createMissionProgressObservable() -> Observable<MissionProgress> {
-        var call: ServerStreamingCall<Mavsdk_Rpc_Mission_SubscribeMissionProgressRequest, Mavsdk_Rpc_Mission_MissionProgressResponse>! 
-        
         return Observable.create { observer in
             let request = Mavsdk_Rpc_Mission_SubscribeMissionProgressRequest()
 
             
 
-            call = self.service.subscribeMissionProgress(request, handler: { (response) in
+            let call = self.service.subscribeMissionProgress(request, handler: { (response) in
 
                 
                      
@@ -1081,7 +1079,10 @@ public class Mission {
                 
             })
 
-            return Disposables.create()
+            return Disposables.create {
+                print("DIMA call.cancel")
+                call.cancel(promise: nil)
+            }
         }
         .retry { error in
             error.map {
@@ -1089,9 +1090,6 @@ public class Mission {
             }
         }
         .share(replay: 1)
-        .do(onDispose: {
-            call.cancel(promise: nil)
-        })
     }
 
     /**
