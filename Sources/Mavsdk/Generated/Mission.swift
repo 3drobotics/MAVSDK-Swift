@@ -1062,7 +1062,7 @@ public class Mission {
 
 
     private func createMissionProgressObservable() -> Observable<MissionProgress> {
-        var call: ServerStreamingCall<Mavsdk_Rpc_Mission_SubscribeMissionProgressRequest, Mavsdk_Rpc_Mission_MissionProgressResponse>!
+        var call: ServerStreamingCall<Mavsdk_Rpc_Mission_SubscribeMissionProgressRequest, Mavsdk_Rpc_Mission_MissionProgressResponse>! 
         
         return Observable.create { observer in
             let request = Mavsdk_Rpc_Mission_SubscribeMissionProgressRequest()
