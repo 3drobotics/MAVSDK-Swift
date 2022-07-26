@@ -12,6 +12,10 @@ public class MavsdkServer {
     deinit {
         mavsdk_server_destroy(self.mavsdkServerHandle)
     }
+    
+    public func destroy() {
+        mavsdk_server_destroy(self.mavsdkServerHandle)
+    }
 
     /**
      Run `mavsdk_server`, connecting to the drone.
