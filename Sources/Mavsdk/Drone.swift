@@ -4,7 +4,7 @@ import MavsdkServer
 
 public class Drone {
     private let scheduler: SchedulerType
-    private var mavsdkServer: MavsdkServer?
+    public var mavsdkServer: MavsdkServer?
 
     public var action: Action!
     public var calibration: Calibration!
@@ -27,7 +27,7 @@ public class Drone {
     public var tune: Tune!
 
     public init(scheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)) {
-        self.scheduler = MainScheduler.instance
+        self.scheduler = scheduler
     }
 
     enum ConnectionError: Swift.Error {
