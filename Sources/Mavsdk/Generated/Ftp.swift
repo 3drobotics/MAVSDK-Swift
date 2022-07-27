@@ -36,6 +36,12 @@ public class Ftp {
         self.scheduler = scheduler
         self.clientEventLoopGroup = eventLoopGroup
     }
+    
+    public func close() {
+        service.channel.close().whenComplete { result in
+            print(Self, result)
+        }
+    }
 
     public struct RuntimeFtpError: Error {
         public let description: String

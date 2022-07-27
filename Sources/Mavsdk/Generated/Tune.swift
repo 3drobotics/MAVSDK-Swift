@@ -36,6 +36,12 @@ public class Tune {
         self.scheduler = scheduler
         self.clientEventLoopGroup = eventLoopGroup
     }
+    
+    public func close() {
+        service.channel.close().whenComplete { result in
+            print(Self, result)
+        }
+    }
 
     public struct RuntimeTuneError: Error {
         public let description: String

@@ -38,6 +38,12 @@ public class Telemetry {
         self.clientEventLoopGroup = eventLoopGroup
     }
 
+    public func close() {
+        service.channel.close().whenComplete { result in
+            print(Self, result)
+        }
+    }
+    
     public struct RuntimeTelemetryError: Error {
         public let description: String
 

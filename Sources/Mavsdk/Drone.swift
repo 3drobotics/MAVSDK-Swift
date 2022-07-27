@@ -92,6 +92,28 @@ public class Drone {
         self.telemetry = Telemetry(address: address, port: port, scheduler: scheduler)
         self.tune = Tune(address: address, port: port, scheduler: scheduler)
     }
+    
+    public func closeConnection() {
+        action.close()
+        calibration.close()
+        camera.close()
+        core.close()
+        followMe.close()
+        ftp.close()
+        geofence.close()
+        gimbal.close()
+        info.close()
+        logFiles.close()
+        manualControl.close()
+        mission.close()
+        missionRaw.close()
+        mocap.close()
+        offboard.close()
+        param.close()
+        shell.close()
+        telemetry.close()
+        tune.close()
+    }
 
     public func disconnect() {
         mavsdkServer?.stop()

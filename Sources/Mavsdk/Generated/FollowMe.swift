@@ -37,6 +37,12 @@ public class FollowMe {
         self.scheduler = scheduler
         self.clientEventLoopGroup = eventLoopGroup
     }
+    
+    public func close() {
+        service.channel.close().whenComplete { result in
+            print(Self, result)
+        }
+    }
 
     public struct RuntimeFollowMeError: Error {
         public let description: String

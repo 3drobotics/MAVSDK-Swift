@@ -43,6 +43,12 @@ public class Camera {
         self.clientEventLoopGroup = eventLoopGroup
     }
 
+    public func close() {
+        service.channel.close().whenComplete { result in
+            print(Self, result)
+        }
+    }
+    
     public struct RuntimeCameraError: Error {
         public let description: String
 
