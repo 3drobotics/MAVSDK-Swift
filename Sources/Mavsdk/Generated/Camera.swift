@@ -45,7 +45,7 @@ public class Camera {
 
     public func close() {
         service.channel.close().whenComplete { result in
-            print(Self, result)
+            print(self, result)
         }
     }
     
