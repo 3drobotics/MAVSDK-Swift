@@ -31,6 +31,7 @@ let package = Package(
   targets: [
     .target(name: "Mavsdk",
             dependencies: [
+                "MavsdkServer",
                 .product(name: "GRPC", package: "grpc-swift"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxBlocking", package: "RxSwift")
