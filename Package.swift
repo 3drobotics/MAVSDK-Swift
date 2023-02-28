@@ -47,8 +47,8 @@ let package = Package(
             ]
     ),
     .binaryTarget(name: "mavsdk_server",
-                      url: "https://github.com/byuarus/MAVSDK-XCFramework/releases/download/1.0.1-crashFix/mavsdk_server.xcframework.zip",
-                      checksum: "b039865d64afc41d61904f067bfd05815f62b6177d1ddd79206ba5bdd469960a"),
+                  url: "https://github.com/mavlink/MAVSDK/releases/download/v1.4.4/mavsdk_server.xcframework.zip",
+                  checksum: "a8c116952919a415a4d8bf166831f0ba4e87c26f4ba33f07aacec9073bc45be6"),
     .testTarget(name: "MavsdkTests",
                 dependencies: [
                   "Mavsdk",
